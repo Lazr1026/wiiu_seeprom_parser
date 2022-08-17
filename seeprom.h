@@ -46,6 +46,14 @@ typedef struct _sys_prod_t {
 	u8 model_number			[0x10];
 } sys_prod_t;
 
+typedef struct _prod_date_t {
+	u8 year 				 [0x02];
+	u8 month			 	 [0x01];
+	u8 day					 [0x01];
+	u8 hour				     [0x01];
+	u8 hour_min				 [0x01];
+} prod_date_t;
+
 typedef struct _boot_param1_t {
 	u8 control_flags		[0x02];
 	u8 nand_cotrol_flags	[0x02];
@@ -121,12 +129,20 @@ typedef struct _seeprom_struct_t {
 	u8 unknown2[0x6a + 0x04 + 0x04 + 0x08];
 //	slc: sys_prod structure
 	sys_prod_t sys_prod;
+//  unknown 3
+	u8 unknown3[0x08];
+//  prod date
+	u8 year[0x02];
+	u8 month[0x01];
+	u8 day[0x01];
+	u8 hour[0x01];
+	u8 min[0x01];
 //	Unknown.
-	u8 unknown3[0x04 + 0x0c + 0x10 + 0x08];
+	u8 unknown4[0x04 + 0x0c + 0x10 + 0x08];
 //	ASCII tag.
 	char ascii_tag2[0x08];
 	//Unknown
-	u8 unknown[0x10]; 
+	u8 unknown5[0x10]; 
 	//boot parameters (encrypted with seeprom key)
 	u8 boot_param1_enc[0x10]; //Control flags
 	u8 boot_param2_enc[0x10]; //Boot parameters about boot1

@@ -141,6 +141,13 @@ int main (int argc, char *argv[])
 	printf   ("model_number:....................\"%.*s\"\n", 0x10, seeprom.sys_prod.model_number);
 	printf   ("---------------------------------------------\n\n");
 	
+	// MFG
+	printf("\n-------------------MFG Date---------------------\n");
+	print_hex("Year:......................", seeprom.year, 0x2);
+	print_hex("Month:.....................", seeprom.month, 0x1);
+	print_hex("Day:.......................", seeprom.day, 0x1);
+	print_hex("Hour:......................", seeprom.hour, 0x1);
+	print_hex("Minute:....................", seeprom.min, 0x1);
 	// Other values
 	printf   ("ASCII Tag 2:.....................\"%.*s\"\n", 0x8, seeprom.ascii_tag2);
 	
